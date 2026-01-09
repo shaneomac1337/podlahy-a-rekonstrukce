@@ -1,26 +1,264 @@
 @import "tailwindcss";
 
+/* ========================================
+   PODLAHY A REKONSTRUKCE - Design System
+   Elegant, warm, artisanal craftsmanship
+   ======================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Stone Palette - Warm neutrals */
+  --stone-50: #faf9f7;
+  --stone-100: #f5f3ef;
+  --stone-200: #e8e4dd;
+  --stone-300: #d4cec3;
+  --stone-400: #b8af9f;
+  --stone-500: #9c917d;
+  --stone-600: #7a7064;
+  --stone-700: #5c544a;
+  --stone-800: #3d3832;
+  --stone-900: #1f1c19;
+
+  /* Brass Accent - Aged gold */
+  --brass-300: #d4a853;
+  --brass-400: #c9973d;
+  --brass-500: #b8862f;
+  --brass-600: #9a7028;
+
+  /* Charcoal - Deep grounding */
+  --charcoal-800: #2a2825;
+  --charcoal-900: #1a1917;
+  --charcoal-950: #0f0e0d;
+
+  /* Semantic tokens */
+  --background: var(--stone-50);
+  --foreground: var(--charcoal-900);
+  --muted: var(--stone-500);
+  --accent: var(--brass-500);
+  --accent-hover: var(--brass-400);
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px -2px rgba(31, 28, 25, 0.08);
+  --shadow-medium: 0 8px 30px -4px rgba(31, 28, 25, 0.12);
+  --shadow-elevated: 0 20px 50px -10px rgba(31, 28, 25, 0.18);
 }
 
 @theme inline {
+  /* Colors */
+  --color-stone-50: var(--stone-50);
+  --color-stone-100: var(--stone-100);
+  --color-stone-200: var(--stone-200);
+  --color-stone-300: var(--stone-300);
+  --color-stone-400: var(--stone-400);
+  --color-stone-500: var(--stone-500);
+  --color-stone-600: var(--stone-600);
+  --color-stone-700: var(--stone-700);
+  --color-stone-800: var(--stone-800);
+  --color-stone-900: var(--stone-900);
+
+  --color-brass-300: var(--brass-300);
+  --color-brass-400: var(--brass-400);
+  --color-brass-500: var(--brass-500);
+  --color-brass-600: var(--brass-600);
+
+  --color-charcoal-800: var(--charcoal-800);
+  --color-charcoal-900: var(--charcoal-900);
+  --color-charcoal-950: var(--charcoal-950);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Fonts */
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-source-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-source-sans), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Selection */
+::selection {
+  background: var(--brass-500);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--stone-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--stone-400);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--stone-500);
+}
+
+/* Wood grain texture keyframes */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-1%, 1%); }
+  40% { transform: translate(1%, -1%); }
+  50% { transform: translate(-1%, 0%); }
+  60% { transform: translate(1%, 0%); }
+  70% { transform: translate(0%, 1%); }
+  80% { transform: translate(0%, -1%); }
+  90% { transform: translate(1%, 1%); }
+}
+
+/* Wood grain overlay */
+.wood-grain-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+}
+
+/* Brass underline animation */
+.brass-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.brass-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--brass-500);
+  transition: width 0.3s ease;
+}
+
+.brass-underline:hover::after {
+  width: 100%;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Image zoom on hover */
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  transition: transform 0.6s ease;
+}
+
+.img-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Hero gradient overlay */
+.hero-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 14, 13, 0.4) 0%,
+    rgba(15, 14, 13, 0.2) 40%,
+    rgba(15, 14, 13, 0.6) 100%
+  );
+}
+
+/* Brass glow effect */
+.brass-glow {
+  box-shadow: 0 0 20px rgba(184, 134, 47, 0.3);
+}
+
+/* Page transition */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Mobile menu animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Lightbox styles */
+.yarl__root {
+  --yarl__color_backdrop: rgba(15, 14, 13, 0.95);
 }

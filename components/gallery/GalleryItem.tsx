@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import type { Project } from '@/data/projects';
 
 interface GalleryItemProps {
@@ -22,13 +23,13 @@ export function GalleryItem({ project, index, onClick }: GalleryItemProps) {
         onClick={onClick}
         className="group block w-full text-left relative overflow-hidden rounded-sm aspect-[4/3] bg-stone-200"
       >
-        {/* Image placeholder */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br transition-transform duration-700 group-hover:scale-105"
-          style={{
-            backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect fill="%23${project.category === 'podlahy' ? '8b7355' : '5c544a'}" width="400" height="300"/><g opacity="0.5"><rect x="0" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '7a6349' : '4a4540'}"/><rect x="50" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '9c8461' : '6a6257'}"/><rect x="100" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '8b7355' : '5c544a'}"/><rect x="150" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '7a6349' : '4a4540'}"/><rect x="200" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '9c8461' : '6a6257'}"/><rect x="250" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '8b7355' : '5c544a'}"/><rect x="300" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '7a6349' : '4a4540'}"/><rect x="350" y="0" width="50" height="300" fill="%23${project.category === 'podlahy' ? '9c8461' : '6a6257'}"/></g></svg>')`,
-            backgroundSize: 'cover',
-          }}
+        {/* Real Project Image */}
+        <Image
+          src={project.images[0]}
+          alt={project.title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
 
         {/* Overlay */}

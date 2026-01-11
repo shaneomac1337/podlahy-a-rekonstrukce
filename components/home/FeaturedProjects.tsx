@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
@@ -33,13 +34,13 @@ export function FeaturedProjects() {
                 href="/portfolio"
                 className="group block relative overflow-hidden rounded-sm aspect-[16/10] bg-stone-300"
               >
-                {/* Placeholder gradient for demo */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-br from-stone-400 to-stone-600 transition-transform duration-700 group-hover:scale-105"
-                  style={{
-                    backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"><rect fill="%23${project.category === 'podlahy' ? '8b7355' : '5c544a'}" width="800" height="500"/><g opacity="0.4"><rect x="0" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '7a6349' : '4a4540'}"/><rect x="100" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '9c8461' : '6a6257'}"/><rect x="200" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '8b7355' : '5c544a'}"/><rect x="300" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '7a6349' : '4a4540'}"/><rect x="400" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '9c8461' : '6a6257'}"/><rect x="500" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '8b7355' : '5c544a'}"/><rect x="600" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '7a6349' : '4a4540'}"/><rect x="700" y="0" width="100" height="500" fill="%23${project.category === 'podlahy' ? '9c8461' : '6a6257'}"/></g></svg>')`,
-                    backgroundSize: 'cover',
-                  }}
+                {/* Real Project Image */}
+                <Image
+                  src={project.images[0]}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes={index === 0 ? '(max-width: 768px) 100vw, 80vw' : '(max-width: 768px) 100vw, 40vw'}
                 />
 
                 {/* Overlay */}

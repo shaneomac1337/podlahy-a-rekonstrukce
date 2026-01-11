@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 
 const stats = [
@@ -104,13 +105,15 @@ export default function ONasPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div
-                className="aspect-[4/3] rounded-sm overflow-hidden"
-                style={{
-                  backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%235c544a" width="800" height="600"/><g opacity="0.3"><rect x="0" y="0" width="100" height="600" fill="%234a4540"/><rect x="100" y="0" width="100" height="600" fill="%236a6257"/><rect x="200" y="0" width="100" height="600" fill="%235c544a"/><rect x="300" y="0" width="100" height="600" fill="%234a4540"/><rect x="400" y="0" width="100" height="600" fill="%236a6257"/><rect x="500" y="0" width="100" height="600" fill="%235c544a"/><rect x="600" y="0" width="100" height="600" fill="%234a4540"/><rect x="700" y="0" width="100" height="600" fill="%236a6257"/></g></svg>')`,
-                  backgroundSize: 'cover',
-                }}
-              />
+              <div className="aspect-[4/3] rounded-sm overflow-hidden relative">
+                <Image
+                  src="/images/projects/rekonstrukce-predsni-pred-po.jpg"
+                  alt="Ukázka naší práce - rekonstrukce předsíně"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </motion.div>
 
             <motion.div

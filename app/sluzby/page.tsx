@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { services } from '@/data/services';
 
@@ -36,6 +37,12 @@ const icons = {
     </svg>
   ),
 };
+
+const serviceImages = [
+  '/images/projects/podlaha-tmave-drevo.jpg',
+  '/images/projects/podlaha-beton.jpg',
+  '/images/projects/rekonstrukce-wc-pred-po.jpg',
+];
 
 export default function SluzbyPage() {
   return (
@@ -76,13 +83,15 @@ export default function SluzbyPage() {
               >
                 {/* Image */}
                 <div className="w-full lg:w-1/2">
-                  <div
-                    className="aspect-[4/3] rounded-sm overflow-hidden"
-                    style={{
-                      backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%23${index === 0 ? '8b7355' : index === 1 ? '9c8461' : '5c544a'}" width="800" height="600"/><g opacity="0.4"><rect x="0" y="0" width="100" height="600" fill="%23${index === 0 ? '7a6349' : index === 1 ? '8b7355' : '4a4540'}"/><rect x="100" y="0" width="100" height="600" fill="%23${index === 0 ? '9c8461' : index === 1 ? 'a8956d' : '6a6257'}"/><rect x="200" y="0" width="100" height="600" fill="%23${index === 0 ? '8b7355' : index === 1 ? '9c8461' : '5c544a'}"/><rect x="300" y="0" width="100" height="600" fill="%23${index === 0 ? '7a6349' : index === 1 ? '8b7355' : '4a4540'}"/><rect x="400" y="0" width="100" height="600" fill="%23${index === 0 ? '9c8461' : index === 1 ? 'a8956d' : '6a6257'}"/><rect x="500" y="0" width="100" height="600" fill="%23${index === 0 ? '8b7355' : index === 1 ? '9c8461' : '5c544a'}"/><rect x="600" y="0" width="100" height="600" fill="%23${index === 0 ? '7a6349' : index === 1 ? '8b7355' : '4a4540'}"/><rect x="700" y="0" width="100" height="600" fill="%23${index === 0 ? '9c8461' : index === 1 ? 'a8956d' : '6a6257'}"/></g></svg>')`,
-                      backgroundSize: 'cover',
-                    }}
-                  />
+                  <div className="aspect-[4/3] rounded-sm overflow-hidden relative">
+                    <Image
+                      src={serviceImages[index]}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
 
                 {/* Content */}

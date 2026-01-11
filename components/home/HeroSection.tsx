@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 
 export function HeroSection() {
@@ -9,11 +10,13 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%233d3832" width="1920" height="1080"/><g opacity="0.3"><rect x="0" y="0" width="120" height="1080" fill="%232a2825"/><rect x="120" y="0" width="120" height="1080" fill="%234a4540"/><rect x="240" y="0" width="120" height="1080" fill="%233d3832"/><rect x="360" y="0" width="120" height="1080" fill="%232a2825"/><rect x="480" y="0" width="120" height="1080" fill="%234a4540"/><rect x="600" y="0" width="120" height="1080" fill="%233d3832"/><rect x="720" y="0" width="120" height="1080" fill="%232a2825"/><rect x="840" y="0" width="120" height="1080" fill="%234a4540"/><rect x="960" y="0" width="120" height="1080" fill="%233d3832"/><rect x="1080" y="0" width="120" height="1080" fill="%232a2825"/><rect x="1200" y="0" width="120" height="1080" fill="%234a4540"/><rect x="1320" y="0" width="120" height="1080" fill="%233d3832"/><rect x="1440" y="0" width="120" height="1080" fill="%232a2825"/><rect x="1560" y="0" width="120" height="1080" fill="%234a4540"/><rect x="1680" y="0" width="120" height="1080" fill="%233d3832"/><rect x="1800" y="0" width="120" height="1080" fill="%232a2825"/></g></svg>')`,
-          }}
+        <Image
+          src="/images/projects/podlaha-svetly-dub.jpg"
+          alt="Profesionální pokládka podlah"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
         />
         <div className="hero-gradient absolute inset-0" />
       </div>
@@ -38,7 +41,7 @@ export function HeroSection() {
         >
           Podlahy
           <br />
-          <span className="text-brass-400">&</span> Rekonstrukce
+          <span className="text-brass-400 font-sans">&</span> Rekonstrukce
         </motion.h1>
 
         <motion.p

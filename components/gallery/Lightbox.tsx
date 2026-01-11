@@ -2,20 +2,13 @@
 
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import type { Project } from '@/data/projects';
 
 interface LightboxProps {
   project: Project | null;
   isOpen: boolean;
   onClose: () => void;
-}
-
-function getPlaceholderImage(category: 'podlahy' | 'rekonstrukce'): string {
-  const color1 = category === 'podlahy' ? '8b7355' : '5c544a';
-  const color2 = category === 'podlahy' ? '7a6349' : '4a4540';
-  const color3 = category === 'podlahy' ? '9c8461' : '6a6257';
-
-  return `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000"><rect fill="%23${color1}" width="1600" height="1000"/><g opacity="0.4"><rect x="0" y="0" width="200" height="1000" fill="%23${color2}"/><rect x="200" y="0" width="200" height="1000" fill="%23${color3}"/><rect x="400" y="0" width="200" height="1000" fill="%23${color1}"/><rect x="600" y="0" width="200" height="1000" fill="%23${color2}"/><rect x="800" y="0" width="200" height="1000" fill="%23${color3}"/><rect x="1000" y="0" width="200" height="1000" fill="%23${color1}"/><rect x="1200" y="0" width="200" height="1000" fill="%23${color2}"/><rect x="1400" y="0" width="200" height="1000" fill="%23${color3}"/></g></svg>')`;
 }
 
 export function Lightbox({ project, isOpen, onClose }: LightboxProps) {
@@ -83,13 +76,12 @@ export function Lightbox({ project, isOpen, onClose }: LightboxProps) {
           >
             {/* Image */}
             <div className="relative aspect-[16/10] rounded-sm overflow-hidden bg-stone-800 mb-6">
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage: getPlaceholderImage(project.category),
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
+              <Image
+                src={project.images[0]}
+                alt={project.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1280px) 100vw, 1280px"
               />
             </div>
 
